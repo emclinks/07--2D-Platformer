@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/player.png" type="Texture" id=2]
+[ext_resource path="res://assets/New_Player.png" type="Texture" id=2]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -47.7193, -80.1353, -45.552, -86.1556, -40.2541, -93.1392, -32.7889, -96.9922, 32.4715, -96.5106, 38.7327, -94.5841, 44.9938, -89.0453, 47.6427, -82.0618, 48.1244, -17.5238, 45.957, -10.2994, 41.6224, -5.00154, 33.9164, 0.296349, -31.1032, -0.18528, -39.5316, -4.2791, -45.0704, -10.0586, -47.4785, -16.5606 )
+polygon = PoolVector2Array( 110, -149.4, 122, -145.4, 122, -144, 137, -133, 137, -130.9, 143, -125.9, 143, -123.5, 150, -111.9, 150, 110, 146.5, 120, 145.1, 120, 136.1, 134, 134.5, 134, 111.5, 150, -111.6, 150, -137, 133.1, -137, 130.9, -143, 125.9, -143, 123.5, -150, 111.9, -150, -110, -149.4, -110, -145.4, -122, -144, -122, -133, -137, -130.7, -137, -120.8, -146, -118.2, -146, -110, -149.3, -110, -150, 110, -150 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 40, 41 )
+extents = Vector2( 34.8031, 34.9018 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 45.6478, 41.7715 )
+extents = Vector2( 37.4548, 25.9811 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 48, 8 )
+extents = Vector2( 53.7556, 29.8742 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 4
@@ -33,15 +33,18 @@ drag_margin_right = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -2.86401, -87.3505 )
+scale = Vector2( 0.21, 0.21 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -48.3333 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2"]
+show_behind_parent = true
+position = Vector2( 6.49334, -18.0427 )
 occluder = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -41 )
+position = Vector2( -3.61002, -88.8326 )
 shape = SubResource( 2 )
 
 [node name="EnemyDetector" type="Area2D" parent="."]
@@ -50,7 +53,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
 modulate = Color( 0.337255, 0.223529, 1, 1 )
-position = Vector2( 0, -48 )
+position = Vector2( 0.0557861, -97.7532 )
 shape = SubResource( 3 )
 
 [node name="StompDetector" type="Area2D" parent="."]
@@ -58,6 +61,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
 modulate = Color( 0.337255, 0.223529, 1, 1 )
+position = Vector2( -6.3175, -62.2726 )
 shape = SubResource( 4 )
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
 [connection signal="area_entered" from="StompDetector" to="." method="_on_StompDetector_area_entered"]
