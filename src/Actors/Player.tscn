@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/New_Player.png" type="Texture" id=2]
@@ -7,12 +7,9 @@
 polygon = PoolVector2Array( 110, -149.4, 122, -145.4, 122, -144, 137, -133, 137, -130.9, 143, -125.9, 143, -123.5, 150, -111.9, 150, 110, 146.5, 120, 145.1, 120, 136.1, 134, 134.5, 134, 111.5, 150, -111.6, 150, -137, 133.1, -137, 130.9, -143, 125.9, -143, 123.5, -150, 111.9, -150, -110, -149.4, -110, -145.4, -122, -144, -122, -133, -137, -130.7, -137, -120.8, -146, -118.2, -146, -110, -149.3, -110, -150, 110, -150 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 34.8031, 34.9018 )
-
-[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 37.4548, 25.9811 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 53.7556, 29.8742 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -43,9 +40,10 @@ show_behind_parent = true
 position = Vector2( 6.49334, -18.0427 )
 occluder = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.61002, -88.8326 )
-shape = SubResource( 2 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -2.86401, -87.3505 )
+scale = Vector2( 0.21, 0.21 )
+polygon = PoolVector2Array( 110, -149.4, 122, -145.4, 122, -144, 137, -133, 137, -130.9, 143, -125.9, 143, -123.5, 150, -111.9, 150, 110, 146.5, 120, 145.1, 120, 136.1, 134, 134.5, 134, 111.5, 150, -111.6, 150, -137, 133.1, -137, 130.9, -143, 125.9, -143, 123.5, -150, 111.9, -150, -110, -149.4, -110, -145.4, -122, -144, -122, -133, -137, -130.7, -137, -120.8, -146, -118.4, -146, -110, -149.4, -110, -150, 110, -150 )
 
 [node name="EnemyDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -54,7 +52,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
 modulate = Color( 0.337255, 0.223529, 1, 1 )
 position = Vector2( 0.0557861, -97.7532 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="StompDetector" type="Area2D" parent="."]
 collision_mask = 16
@@ -62,6 +60,6 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
 modulate = Color( 0.337255, 0.223529, 1, 1 )
 position = Vector2( -6.3175, -62.2726 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
 [connection signal="area_entered" from="StompDetector" to="." method="_on_StompDetector_area_entered"]

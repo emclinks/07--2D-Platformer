@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Objects/Portal2D.gd" type="Script" id=1]
 [ext_resource path="res://assets/portal.png" type="Texture" id=2]
@@ -38,6 +38,24 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.41
+emission_shape = 1
+emission_sphere_radius = 128.0
+flag_disable_z = true
+direction = Vector3( 15, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 75, 0 )
+angular_velocity = 201.29
+angular_velocity_random = 0.37
+orbit_velocity = 0.21
+orbit_velocity_random = 0.74
+scale = 17.0
+scale_random = 1.0
+color = Color( 0.192157, 0.721569, 0.698039, 1 )
+hue_variation = 1.0
+hue_variation_random = 0.12
+
 [node name="Portal2D" type="Area2D"]
 pause_mode = 2
 monitorable = false
@@ -66,4 +84,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( -1.16638, -131.798 )
+amount = 15
+process_material = SubResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
