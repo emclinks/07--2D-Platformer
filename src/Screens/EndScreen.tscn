@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/Screens/EndScreen.gd" type="Script" id=2]
 [ext_resource path="res://assets/background.png" type="Texture" id=3]
 [ext_resource path="res://src/UserInterface/Title.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/UserInterface/SceneChangeButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Dancing Pumpkins.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=7]
 
 [node name="EndScreen" type="Control"]
@@ -17,21 +18,41 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.0745098, 1, 0.435294, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" parent="." instance=ExtResource( 4 )]
-text = "Congratulations you finished the game!"
+modulate = Color( 1, 0, 0.513726, 1 )
+margin_left = 6.68066
+margin_top = 36.744
+margin_right = 6.68066
+margin_bottom = 389.744
+text = "Thanks for playing Slime's Tale!"
 
 [node name="Result" type="Label" parent="."]
+modulate = Color( 1, 0, 0.513726, 1 )
 anchor_right = 1.0
-margin_top = 230.0
-margin_bottom = 400.0
+margin_left = 8.35083
+margin_top = 214.968
+margin_right = 8.35083
+margin_bottom = 384.968
 text = "Your final score is: %s and you died %s times!"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -25.243
+autoplay = true
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchor_left = 0.5

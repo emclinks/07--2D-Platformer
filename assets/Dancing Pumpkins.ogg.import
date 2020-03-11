@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dancing Pumpkins.ogg-9bc3de695f16aa1fb74c6df30ee265c5.oggstr"
+
+[deps]
+
+source_file="res://assets/Dancing Pumpkins.ogg"
+dest_files=[ "res://.import/Dancing Pumpkins.ogg-9bc3de695f16aa1fb74c6df30ee265c5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
